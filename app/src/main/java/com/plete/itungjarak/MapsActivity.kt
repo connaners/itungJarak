@@ -1,6 +1,7 @@
 package com.plete.itungjarak
 
 import android.location.Geocoder
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -49,14 +50,34 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnCameraIdleListener {
             var currentLocation: LatLng = mMap.cameraPosition.target
             val geocoder = Geocoder(this)
+            geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
             mMap.clear()
-            val list = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
             mMap.addMarker(MarkerOptions().position(currentLocation).title("opoora")).showInfoWindow()
 
+            var list = LatLng(currentLocation.latitude, currentLocation.longitude)
+
+            val lat1 = currentLocation.latitude.toString()
+            val long1 = currentLocation.longitude.toString()
+
+            val lat2 = currentLocation.latitude.toString()
+            val long2 = currentLocation.longitude.toString()
+
             btnSet.setOnClickListener {
-                val lat1 = list[0].toString()
-                val long1 = list[1].toString()
-                etLat1.text = list(0)
+                etLat1.setText(lat1)
+                etLong1.setText(long1)
+            }
+
+            btnSetSet.setOnClickListener {
+                etLat2.setText(lat2)
+                etLong2.setText(long2)
+            }
+
+            btnCalc.setOnClickListener {
+                val loc1 = Location("")
+                val loc2 = Location("")
+                val jarak = loc1.distanceTo(loc2).toString()
+
+                tvHasil.setText(jarak)
             }
         }
     }

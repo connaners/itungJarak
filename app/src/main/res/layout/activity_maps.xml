@@ -32,6 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calculate!"/>
+        <Button
+            android:id="@+id/btnSetSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="SET"/>
 
     </LinearLayout>
     <LinearLayout
@@ -79,7 +85,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/hasil"
+        android:id="@+id/tvHasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
